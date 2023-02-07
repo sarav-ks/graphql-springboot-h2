@@ -1,0 +1,23 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+  },
+  "customizations":{
+    "codespaces":{
+      "repositories":{
+        "sarav-ks/graphql-springboot-h2":{
+          "permissions":{
+            "contents":"Write",
+            "pull_requests":"write"  
+          }
+        },
+        "sarav-ks/dapr-java":{
+          "permissions":{
+            "contents":"Write",
+            "pull_requests":"write"  
+          }
+        }
+      }
+    }
+  }
+}
