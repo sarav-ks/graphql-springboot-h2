@@ -4,8 +4,8 @@ Sample Book Recommendation App using GraphQL / SpringBoot / JPA / MapStruct / H2
 ### Below are the model objects:
 
 1) Author (name, email , city , state , country)
-2) Book (id , name , authors ,genres, sample)
-3) BookReview (book,reviewer,rating,awards)
+2) Book (id , name , authors ,genres, sample,awards)
+3) BookReview (book,reviewer,rating)
 
 
 ### Model Relationship :
@@ -18,13 +18,13 @@ Sample Book Recommendation App using GraphQL / SpringBoot / JPA / MapStruct / H2
 - Create Author
 ```
 mutation {
-  createAuthor(name: "Author1", email: "auth1@abc.com", city: "C" , state: "S", country: "CC") { id , name }
+  createAuthor(name: "Author1", email: "auth1@abc.com", city: "C" , state: "S", country: "CC") { name, email }
 }
 ```
 - Create Book 
 ```
 mutation {
-  createBook(name: "Graph QL", authors: [1,2], genres: "Technology") { id , name }
+  createBook(name: "Graph QL", authors: [1,2], genres: "Technology", awards: ["NY Best Seller","Best Book of Year"]) { id , name }
 }
 ```
 ```
@@ -36,6 +36,19 @@ mutation {
 
 ```
 mutation {
-  createReview(book: 1, reviewer: "rev1", rating: 2, awards: ["NY Best Seller","Best Book of Year"]) { book , rating }
+  createReview(book: 1, reviewer: "rev1", rating: 2) { book {name} , rating, reviewer }
 }
 ```
+
+- **Query** for Book Recommendation
+
+```
+query {
+  recommendBook(authorname: "Author1") { book {id, name} , rating }
+}
+```
+- **Update** Book to Add awards
+```
+mutation {
+  updateBook(id: 2, awards: ["Best Kids Book of Year"]) { name, awards }
+}
