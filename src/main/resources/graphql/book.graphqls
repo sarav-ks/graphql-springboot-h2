@@ -1,0 +1,17 @@
+type Book {
+    id: ID!
+    name: String!
+    genre: String
+    sample: String
+    authors: [Author]
+    awards: [String]
+}
+
+type Query {
+    recommendBook(authorName: String!): [Book]
+}
+
+extend type Mutation {
+    createBook(name: String!, genre: String, sample: String, authors: [Author], awards: [String]): Book!
+    updateBook(id: ID!, name: String, genre: String, sample: String, authors: [Author], awards: [String]): Book!
+}

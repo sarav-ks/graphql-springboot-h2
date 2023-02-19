@@ -1,0 +1,9 @@
+type Review{
+    book: Book
+    reviewer: String!
+    rating : Int
+}
+
+type Mutation {
+    createReview (book: Book!, reviewer: String!, rating: Int): Review!
+}
