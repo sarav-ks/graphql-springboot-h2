@@ -12,6 +12,6 @@ type Query {
 }
 
 extend type Mutation {
-    createBook(name: String!, genre: String, sample: String, authors: [Author], awards: String): Book!
-    updateBook(id: ID!, name: String, genre: String, sample: String, authors: [Author], awards: String): Book!
+    createBook(name: String!, genre: String, sample: String, authors: [ID!], awards: String): Book!
+    updateBook(id: ID!, name: String, genre: String, sample: String, authors: [ID!], awards: String): Book!
 }

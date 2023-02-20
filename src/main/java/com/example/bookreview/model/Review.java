@@ -1,12 +1,14 @@
 package com.example.bookreview.model;
 
 import lombok.Data;
+import lombok.Builder;
 
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@Builder
 public class Review{
     @Id
     @Column(name="reviewer")

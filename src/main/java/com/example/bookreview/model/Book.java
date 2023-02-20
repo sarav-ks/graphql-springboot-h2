@@ -1,12 +1,14 @@
 package com.example.bookreview.model;
 
 import lombok.Data;
+import lombok.Builder;
 import java.util.*;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@Builder
 public class Book{
     @Id
     @GeneratedValue
