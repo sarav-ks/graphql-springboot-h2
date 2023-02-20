@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 public class Author{
     @Id
-    
+    @GeneratedValue
     private Long id;
     @Column(name="name")
     private String name;
