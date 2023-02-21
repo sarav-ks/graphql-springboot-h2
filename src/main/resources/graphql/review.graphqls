@@ -4,6 +4,6 @@ type Review{
     rating : Int
 }
 
-type Mutation {
+extend type Mutation {
     createReview (book: ID!, reviewer: String!, rating: Int): Review!
 }

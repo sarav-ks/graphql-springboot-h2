@@ -33,22 +33,37 @@ public class BookController{
     public Book createBook(@Argument String name , @Argument String genre, @Argument String sample , @Argument String awards, @Argument List<Long> authors){
         List<Author> alist = authors.stream().map(e->Author.builder().id(e).build()).collect(Collectors.toList());
         Book newBook = Book.builder().name(name).genre(genre).sample(sample).awards(awards).authors(alist).build();
-        return newBook;
+        Book createdBook = this.bookRepo.save(newBook);
+        return createdBook;
     }
 
     @MutationMapping
     public Book updateBook(@Argument Long id ,@Argument String name, @Argument String genre, @Argument String sample , @Argument String awards, @Argument List<Long> authors){
-        return null;
+        // Book searchBook = Book.builder().id(id).build();
+        Book updateBook = this.bookRepo.getOne(id);
+        if (name != null) updateBook.setName(name);
+        if (genre != null) updateBook.setGenre(genre);
+        if (sample != null) updateBook.setSample(sample);
+        if (awards != null) updateBook.setAwards(awards);
+        if (authors != null && authors.size() >0) {
+            List<Author> alist = authors.stream().map(e->Author.builder().id(e).build()).collect(Collectors.toList());
+            updateBook.setAuthors(alist);
+        }
+        Book updatedBook = this.bookRepo.save(updateBook);
+        return updateBook;
     }
 
     @MutationMapping
-    public Author createAuthor(@Argument String name , @Argument String email, @Argument String city , @Argument String state){
-        return null;
+    public Author createAuthor(@Argument String name , @Argument String email, @Argument String city , @Argument String state, @Argument String country){
+        Author newAuthor = Author.builder().name(name).email(email).city(city).state(state).country(country).build();
+        return this.authRepo.save(newAuthor);
     }
 
     @MutationMapping
     public Review createReview(@Argument Long book , @Argument String reviewer, @Argument Integer rating){
-        return null;
+        Book bookToReview = Book.builder().id(book).build();
+        Review review = Review.builder().reviewer(reviewer).rating(rating).book(bookToReview).build();
+        return this.reviewRepo.save(review);
     }
 
 }
