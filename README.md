@@ -53,6 +53,7 @@ mutation {
   updateBook(id: 2, awards: ["Best Kids Book of Year"]) { name, awards }
 }
 
+```
 ### To run 
 
 ```
