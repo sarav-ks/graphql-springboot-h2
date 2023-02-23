@@ -54,7 +54,12 @@ mutation {
 }
 
 ```
-### To run 
+### To Compile and start the App
+
+```
+mvn spring-boot:run
+```
+### To test 
 
 ```
 $ curl \
