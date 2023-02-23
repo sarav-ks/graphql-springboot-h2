@@ -52,3 +52,12 @@ query {
 mutation {
   updateBook(id: 2, awards: ["Best Kids Book of Year"]) { name, awards }
 }
+
+### To run 
+
+```
+$ curl \
+> --request POST 'localhost:8080/graphql' \
+> --header 'Content-Type: application/json' \
+> --data-raw '{"query":"mutation {\n  createAuthor(name: \"Author1\", email: \"auth1@abc.com\", city: \"C\" , state: \"S\", country: \"CC\") { name, email }\n}"}'
+```

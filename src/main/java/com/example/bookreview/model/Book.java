@@ -2,6 +2,7 @@ package com.example.bookreview.model;
 
 import lombok.Data;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import java.util.*;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Builder
+@Table(name="book")
 public class Book{
     @Id
     @GeneratedValue

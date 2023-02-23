@@ -2,12 +2,14 @@ package com.example.bookreview.model;
 
 import lombok.Data;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
 @Builder
+@Table(name="author")
 public class Author{
     @Id
     @GeneratedValue
